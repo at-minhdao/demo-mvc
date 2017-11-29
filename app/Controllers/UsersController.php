@@ -17,7 +17,8 @@
         }
         public function getAll()
         {
-            // $arUser = $this->find(1);
+            $user = new User();
+            $arUser = $user->all();
             echo "<pre>";
             print_r($arUser);
             echo "</pre>";
