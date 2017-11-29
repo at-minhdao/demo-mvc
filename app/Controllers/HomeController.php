@@ -8,11 +8,16 @@
     {
     	public function index()
     	{
-    		view('home.index');
+            $post    = new Post();
+            $data['arPosts'] = $post->getAll();
+            // dd($data);
+    		view('home.index', $data);
     	}
-        public function post()
+        public function post($id)
         {
-            view('home.post');
+            $post = new Post();
+            $data['post'] = $post->find($id);
+            view('home.post',$data);
         }
         public function about()
         {
