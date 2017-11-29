@@ -11,4 +11,15 @@
             $data['id'] = $id;
             view('users.show', $data);
         }
+        public function test()
+        {
+            view('users.test');
+        }
+        public function getAll()
+        {
+            // $arUser = $this->find(1);
+            echo "<pre>";
+            print_r($arUser);
+            echo "</pre>";
+        }
     }
