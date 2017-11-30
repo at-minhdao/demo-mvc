@@ -23,9 +23,13 @@
         {
             view('home.about');
         }
-        public function contact()
+        public function login()
         {
-            view('home.contact');
+            view('home.login');
+        }
+        public function register()
+        {
+            view('home.register');
         }
 
     }

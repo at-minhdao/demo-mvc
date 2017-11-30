@@ -45,7 +45,7 @@
               <a class="nav-link" href="/home/post">Sample Post</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/home/contact">Contact</a>
+              <a class="nav-link" href="/home/login">Login</a>
             </li>
           </ul>
         </div>
