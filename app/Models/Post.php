@@ -14,4 +14,18 @@ class Post extends Model
 
 		return $stmt->fetchAll();
 	}
+	public function addPost($arPost)
+	{
+		$sql = "INSERT INTO posts(name, preview_text, detail_text, user_id, date_create) VALUES (:name,:preview_text,:detail_text,:user_id,:date_create)";
+    	$stmt = static::$db->prepare($sql);
+		$data = array(
+			'name'         => $arPost['name'],
+			'preview_text' => $arPost['preview_text'],
+			'detail_text'  => $arPost['detail_text'],
+			'user_id'      => $arPost['user_id'],
+			'date_create'  => $arPost['date_create'],
+		);
+		$result = $stmt->execute($data);
+		return $result;
+	}
 }
