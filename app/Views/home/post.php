@@ -1,7 +1,5 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'].'/../app/Views/layouts/header.php'; ?>
 
-
-
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('/img/post-bg.jpg')">
   <div class="overlay"></div>

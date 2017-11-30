@@ -1,6 +1,6 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'].'/../app/Views/layouts/header.php'; ?>
 <?php 
-if (isset($_SESSION['userLogin'])) {
+if (!isset($_SESSION['userLogin'])) {
   header('location: /home/index');
 }
 ?>
@@ -11,7 +11,7 @@ if (isset($_SESSION['userLogin'])) {
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="page-heading">
-          <h1>Login</h1>
+          <h1>New Blog</h1>
           <!-- <span class="subheading">Have questions? I have answers.</span> -->
         </div>
       </div>
