@@ -8,7 +8,27 @@ class UsersController extends Controller
 {
     public function login()
     {
-        view('users.login');
+        $arUser = array();
+        $arUser['username'] = $_POST['username'];
+        $arUser['password'] = $_POST['password'];
+
+        $user      = new User();
+        $userCheck = $user->checkUser($arUser);
+        if ($userCheck['password'] == $arUser['password']) {
+            $_SESSION['userLogin'] = $userCheck;
+            // view('home.index');
+            header('location: /home/index');
+        } else {
+            $data['username'] = $arUser['username'];
+            $data['password'] = $arUser['password'];
+            $data['msg']      = "Wrong username or password!";
+            view('home.login',$data);
+        }
+    }
+    public function logout()
+    {
+        session_destroy();
+        header('location: /home/index');
     }
     public function register()
     {

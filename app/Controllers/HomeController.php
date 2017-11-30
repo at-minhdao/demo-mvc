@@ -31,5 +31,9 @@
         {
             view('home.register');
         }
+        public function postblog()
+        {
+            view('home.postblog');
+        }
 
     }

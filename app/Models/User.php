@@ -18,4 +18,14 @@ class User extends Model
 		$result = $stmt->execute($data);
 		return $result;
     }
+    public function checkUser($arUser)
+    {
+    	$sql = "SELECT * FROM users WHERE username=:username";
+    	$stmt = static::$db->prepare($sql);
+		$data = array(
+			'username' => $arUser['username'],
+		);
+		$stmt->execute($data);
+		return $userCheck = $stmt->fetch();
+    }
 }
