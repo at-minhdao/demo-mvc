@@ -49,14 +49,14 @@
           </li>
           <?php if (isset($_SESSION['userLogin'])): ?>
             <li class="nav-item">
-              <a class="nav-link" href="/home/postblog">Post Blog</a>
+              <a class="nav-link" href="/users/addBlog">Post Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
             </li>
             <?php else: ?>
               <li class="nav-item">
-                <a class="nav-link" href="/home/login">Login</a>
+                <a class="nav-link" href="/users/login">Login</a>
               </li>
             <?php endif ?>
           </ul>
