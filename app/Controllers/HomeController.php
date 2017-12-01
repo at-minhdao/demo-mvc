@@ -23,33 +23,5 @@ class HomeController extends Controller
     {
         view('home.about');
     }
-    public function login()
-    {
-        view('home.login');
-    }
-    public function register()
-    {
-        view('home.register');
-    }
-    public function postblog()
-    {
-        view('home.postblog');
-    }
-    public function addBlog()
-    {
-        $arPost['name']         = $_POST['name'];
-        $arPost['preview_text'] = $_POST['preview_text'];
-        $arPost['detail_text']  = $_POST['detail_text'];
-        $arPost['user_id']      = $_SESSION['id'];
-        $arPost['date_create']  = date('Y-m-d H:i:s');
-        // dd($arPost);
-        $post = new Post();
-        $result = $post->addPost($arPost);
-        if ($result) {
-            header('location: /home/index');
-        } else {
-            echo "Fail!";
-        }
-    }
 
 }

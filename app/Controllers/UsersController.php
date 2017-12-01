@@ -3,10 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 
 class UsersController extends Controller
 {
     public function login()
+    {
+        view('users.login');
+    }
+    public function register()
+    {
+        view('users.register');
+    }
+    public function addBlog()
+    {
+        view('users.addblog');
+    }
+
+    public function postLogin()
     {
         $arUser = array();
         $arUser['username'] = $_POST['username'];
@@ -30,7 +44,7 @@ class UsersController extends Controller
         session_destroy();
         header('location: /home/index');
     }
-    public function register()
+    public function postRegister()
     {
         $arUser = array();
         $arUser['username'] = $_POST['username'];
@@ -45,6 +59,23 @@ class UsersController extends Controller
             $data['msg'] = "Fail!";
         }
         view('home.register',$data);
+    }
+    public function postAddBlog()
+    {
+        $arPost['name']         = $_POST['name'];
+        $arPost['preview_text'] = $_POST['preview_text'];
+        $arPost['detail_text']  = $_POST['detail_text'];
+        $arPost['user_id']      = $_SESSION['id'];
+        $arPost['date_create']  = date('Y-m-d H:i:s');
+        // dd($arPost);
+        $post = new Post();
+        // echo "string";die();
+        $result = $post->addPost($arPost);
+        if ($result) {
+            header('location: /home/index');
+        } else {
+            echo "Fail!";
+        }
     }
     
 }
