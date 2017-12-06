@@ -39,8 +39,30 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/../app/Views/layouts/header.php';
       <?php endforeach ?>
       <!-- Pager -->
       <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <!-- <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a> -->
       </div>
+      <ul class="pagination">
+        <?php 
+        // if current_page > 1 and total_page > 1 show button prev
+        if ($current_page > 1 && $total_page > 1){
+          echo '<li class="page-item"><a class="page-link" href="?page='.($current_page-1).'">Previous</a></li>';
+        }
+        // pagination
+            for ($i = 1; $i <= $total_page; $i++){
+          if ($i == $current_page){
+            echo '<li class="page-item"><a class="page-link">'.$i.'</a></li>';
+          }
+          else{
+            echo '<li class="page-item"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
+          }
+        }
+
+        // if current_page < $total_page and total_page > 1 show button prev
+        if ($current_page < $total_page && $total_page > 1){
+          echo '<li class="page-item"><a class="page-link" href="?page='.($current_page+1).'">Next</a></li>';
+        }
+        ?>
+      </ul>
     </div>
   </div>
 </div>
