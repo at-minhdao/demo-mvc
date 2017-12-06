@@ -26,17 +26,18 @@ class UsersController extends Controller
         $arUser['username'] = $_POST['username'];
         $arUser['password'] = $_POST['password'];
 
-        $user      = new User();
-        $userCheck = $user->checkUser($arUser);
-        if ($userCheck['password'] == $arUser['password']) {
-            $_SESSION['userLogin'] = $userCheck;
-            // view('home.index');
-            header('location: /home/index');
+        if (empty($arUser['username']) || empty($arUser['password'])) {
+            $error['msg'] = "Please enter username and password!";
+            view('users.login',$error);
         } else {
-            $data['username'] = $arUser['username'];
-            $data['password'] = $arUser['password'];
-            $data['msg']      = "Wrong username or password!";
-            view('home.login',$data);
+            $user   = new User();
+            $result = $user->checkUser($arUser);
+            if ($result) {
+                header('location: /');
+            } else {
+                $error['msg'] = "Password does not match!";
+                view('users.login',$error);
+            }
         }
     }
     public function logout()

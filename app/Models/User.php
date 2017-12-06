@@ -20,12 +20,20 @@ class User extends Model
     }
     public function checkUser($arUser)
     {
+		//get user login from database
     	$sql = "SELECT * FROM users WHERE username=:username";
     	$stmt = static::$db->prepare($sql);
 		$data = array(
 			'username' => $arUser['username'],
 		);
 		$stmt->execute($data);
-		return $userCheck = $stmt->fetch();
+		$userCheck = $stmt->fetch();
+		//validate user login
+		if ($userCheck['username'] == $arUser['username'] && $userCheck['password'] == $arUser['password']) {
+			$_SESSION['userLogin'] = $userCheck;
+			return true;
+		} else {
+			return false;
+		}
     }
 }
