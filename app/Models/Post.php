@@ -60,7 +60,7 @@ class Post extends Model
 			'name'         => $arPost['name'],
 			'preview_text' => $arPost['preview_text'],
 			'detail_text'  => $arPost['detail_text'],
-			'user_id'      => $arPost['user_id'],
+			'user_id'      => $_SESSION['userLogin']['id'],
 			'date_create'  => $arPost['date_create'],
 		);
 		$result = $stmt->execute($data);
