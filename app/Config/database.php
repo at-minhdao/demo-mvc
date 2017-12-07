@@ -5,8 +5,8 @@ return [
     'host'     => '192.168.33.11',
     'port'     =>  3306,
     'db'       => 'August_Blog',
-    'user'     => 'dtminh188',
-    'password' => '123',
+    'user'     => 'root',
+    'password' => 'root',
     'charset'  => 'utf8'
 
 ];

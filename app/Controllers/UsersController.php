@@ -52,14 +52,29 @@ class UsersController extends Controller
         $arUser['fullname'] = $_POST['fullname'];
         $arUser['password'] = $_POST['password'];
 
-        $user = new User();
-        $result = $user->addUser($arUser);
-        if ($result) {
-            $data['msg'] = "Success!";
-        } else {
-            $data['msg'] = "Fail!";
+        //validate form register
+        $error = array();
+        if (empty($arUser['password'])) {
+            $error['msg'] = "Please enter password!";
         }
-        view('home.register',$data);
+        if (empty($arUser['fullname'])) {
+            $error['msg'] = "Please enter fullname!";
+        }
+        if (empty($arUser['username'])) {
+            $error['msg'] = "Please enter username!";
+        }  
+        if (count($error) != 0) {
+            view('users.register',$error);
+        } else {
+            $user = new User();
+            $result = $user->addUser($arUser);
+            if ($result) {
+                header('location: /users/login');
+            } else {
+                $data['msg'] = "This username has already existed!";                
+                view('users.register',$data);            
+            }
+        }
     }
     public function postAddBlog()
     {
