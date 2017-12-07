@@ -48,12 +48,19 @@ class UsersController extends Controller
     public function postRegister()
     {
         $arUser = array();
-        $arUser['username'] = $_POST['username'];
-        $arUser['fullname'] = $_POST['fullname'];
-        $arUser['password'] = $_POST['password'];
+        $arUser['username']   = trim($_POST['username']);
+        $arUser['fullname']   = trim($_POST['fullname']);
+        $arUser['password']   = trim($_POST['password']);
+        $arUser['rePassword'] = trim($_POST['rePassword']);
 
         //validate form register
         $error = array();
+        if ($arUser['password'] != $arUser['rePassword']) {
+            $error['msg'] = "Confirm password was wrong!";
+        }
+        if (empty($arUser['rePassword'])) {
+            $error['msg'] = "Please comfirm the password!";
+        }
         if (empty($arUser['password'])) {
             $error['msg'] = "Please enter password!";
         }
