@@ -71,7 +71,7 @@ class UsersController extends Controller
             if ($result) {
                 header('location: /users/login');
             } else {
-                $data['msg'] = "Fail!";                
+                $data['msg'] = "This username has already existed!";                
                 view('users.register',$data);            
             }
         }
