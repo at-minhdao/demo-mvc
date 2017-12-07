@@ -34,14 +34,21 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Fullname</label>
-            <input type="text" name="fullname" class="form-control" placeholder="Fullname" id="name" required>
+            <input type="text" name="fullname" class="form-control" placeholder="Fullname" id="fullname" required>
             <p class="help-block text-danger"></p>
           </div>
         </div>
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password" id="email" required>
+            <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
+            <p class="help-block text-danger"></p>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Confirm Password</label>
+            <input type="password" name="rePassword" class="form-control" placeholder="Confirm Password" id="rePassword" required>
             <p class="help-block text-danger"></p>
           </div>
         </div>
